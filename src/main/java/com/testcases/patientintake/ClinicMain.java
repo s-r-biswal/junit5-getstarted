@@ -39,6 +39,27 @@ public class ClinicMain {
         }
     }
 
+    private static void performPatientEntry(Scanner scanner) {
+        scanner.nextLine();
+        System.out.println("\n\n Please Enter Appointment info: ");
+        System.out.println("Patient first name : ");
+        String pStartName = scanner.nextLine();
+        System.out.println("Patient first name : ");
+        String pLastName = scanner.nextLine();
+        System.out.println("Appointment date (M/d/yyyy h:m a) :");
+        String when = scanner.nextLine();
+        System.out.println("Doctor lastname : ");
+        String doc = scanner.next();
+
+        try{
+            calendar.addAppointment(pStartName, pLastName, when, doc);
+        }catch (Exception e){
+            System.out.println("Error !s");
+            return ;
+        }
+    System.out.println("Successfully recorded Patient details");
+    }
+
     private static void fetchAllAppointments(Scanner scanner) {
         System.out.println("\n\nAll appointments in system");
         for(PatientAppointment appointment: calendar.getAppointments()){
@@ -47,10 +68,5 @@ public class ClinicMain {
             System.out.println(String.format("%s:  %s,  %s\t\tDoctor: %s", appTime, appointment.getPatientFName(),
                     appointment.getPatientLName(), appointment.getDoctor().getName()));
         }
-    }
-
-    private static void performPatientEntry(Scanner scanner) {
-        Stream<String> lines = scanner.useDelimiter("\n").tokens();
-
     }
 }
