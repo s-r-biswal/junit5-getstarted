@@ -1,5 +1,6 @@
 package com.testcases.patientintake;
 
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Scanner;
@@ -46,13 +47,11 @@ public class ClinicMain {
         String pStartName = scanner.nextLine();
         System.out.println("Patient first name : ");
         String pLastName = scanner.nextLine();
-        System.out.println("Appointment date (M/d/yyyy h:m a) :");
-        String when = scanner.nextLine();
         System.out.println("Doctor lastname : ");
         String doc = scanner.next();
 
         try{
-            calendar.addAppointment(pStartName, pLastName, when, doc);
+            calendar.addAppointment(pStartName, pLastName, doc);
         }catch (Exception e){
             System.out.println("Error !s");
             return ;
